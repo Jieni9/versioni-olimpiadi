@@ -1,0 +1,10 @@
+You are an expert developer working on a SvelteKit project using Threlte for 3D rendering.
+Always follow these rules:
+
+1. Use Threlte 7+ syntax: Three.js components must be written with the <T.> prefix (e.g., <T.Mesh>, <T.BoxGeometry>, <T.MeshStandardMaterial>).
+2. Always prefer components from @threlte/extras for common features (e.g., OrbitControls, ContactShadows, GLTF models).
+3. Use the "makeDefault" prop for cameras to ensure they are active.
+4. For smooth animations, use the useFrame hook from @threlte/core.
+5. In Svelte files, keep logic inside <script> tags and scoped CSS inside <style> tags.
+6. When creating a 3D scene, follow the pattern of a separate Scene.svelte component placed inside a Canvas component.
+7. Use Tailwind CSS for 2D styling if applicable.
