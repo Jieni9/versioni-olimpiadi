@@ -1,0 +1,18 @@
+:root {
+	--font-display: "slight-chance", sans-serif;
+	--font-body: "inclusive-sans", sans-serif;
+}
+
+html,
+body {
+	font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-display);
+}

@@ -1,8 +1,24 @@
 <script lang="ts">
-	import { T } from '@threlte/core';
-	import { GLTF, OrbitControls } from '@threlte/extras';
+	import { T, useScene } from '@threlte/core';
+	import { GLTF, OrbitControls, useDraco } from '@threlte/extras';
+	import { Color } from 'three';
+
+	const { scene } = useScene();
+
+	$effect.pre(() => {
+		const previous = scene.background;
+		scene.background = new Color('#ffffff');
+		return () => {
+			scene.background = previous;
+		};
+	});
 
 	let { progress = 0 }: { progress: number } = $props();
+
+	/** Draco-compressed GLBs need this (common Blender export). */
+	const dracoLoader = useDraco();
+
+	let medalGltfFailed = $state(false);
 
 	const mix = (from: number, to: number, t: number) => from + (to - from) * t;
 
@@ -42,12 +58,28 @@
 <T.PerspectiveCamera makeDefault fov={45} position={cameraPosition} />
 <OrbitControls enableZoom={false} enablePan={false} />
 
-<T.AmbientLight intensity={0.4} />
-<T.DirectionalLight position={[4, 6, 2]} intensity={1.15} />
-<T.DirectionalLight position={[-5, -2, -3]} intensity={0.45} color="#7ab9ff" />
+<T.AmbientLight intensity={0.72} />
+<T.DirectionalLight position={[4, 6, 3]} intensity={0.95} />
+<T.DirectionalLight position={[-4, 2, -2]} intensity={0.35} color="#c8d8ff" />
 
 <T.Group rotation={medalRotation} position={medalPosition} scale={medalScale}>
-	<GLTF url="/models/avatar.glb" />
+	{#if !medalGltfFailed}
+		<GLTF
+			url="/models/zoh2026.glb"
+			dracoLoader={dracoLoader}
+			onerror={() => {
+				medalGltfFailed = true;
+				console.warn(
+					'Could not load /models/zoh2026.glb — put the file at static/models/zoh2026.glb and reload.'
+				);
+			}}
+		/>
+	{:else}
+		<T.Mesh position={[0, 0, 0]}>
+			<T.IcosahedronGeometry args={[1.2, 1]} />
+			<T.MeshStandardMaterial color="#f6c54a" roughness={0.25} metalness={0.75} />
+		</T.Mesh>
+	{/if}
 	<T.Mesh position={[0, -0.05, 0]}>
 		<T.CylinderGeometry args={[0.95, 0.95, 0.15, 48]} />
 		<T.MeshStandardMaterial color="#f6c54a" roughness={0.2} metalness={0.82} />
@@ -55,7 +87,6 @@
 </T.Group>
 
 <T.Group position={skiPosition} rotation={[0, -winterSpin, 0]} scale={mix(0.5, 0.95, winterReveal)}>
-	<GLTF url="/models/winter-ski.glb" />
 	<T.Mesh>
 		<T.BoxGeometry args={[0.34, 1.75, 0.34]} />
 		<T.MeshStandardMaterial
@@ -69,7 +100,6 @@
 </T.Group>
 
 <T.Group position={skatePosition} rotation={[0.15, winterSpin * 0.8, 0]} scale={mix(0.5, 0.9, winterReveal)}>
-	<GLTF url="/models/winter-skate.glb" />
 	<T.Mesh>
 		<T.TorusGeometry args={[0.6, 0.18, 16, 30]} />
 		<T.MeshStandardMaterial
@@ -83,7 +113,6 @@
 </T.Group>
 
 <T.Group position={bobsledPosition} rotation={[0, -winterSpin * 1.05, 0]} scale={mix(0.45, 0.85, winterReveal)}>
-	<GLTF url="/models/winter-bobsled.glb" />
 	<T.Mesh>
 		<T.CapsuleGeometry args={[0.38, 1.15, 10, 18]} />
 		<T.MeshStandardMaterial
