@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Nav from '$lib/components/Nav.svelte';
 	import { Canvas } from '@threlte/core';
 	import Scene from '$lib/components/Scene.svelte';
 
@@ -27,6 +28,8 @@
 </script>
 
 <svelte:window bind:scrollY={scrollY} onresize={updateMaxScroll} />
+
+<Nav />
 
 <div class="canvas-layer" aria-hidden="true">
 	<Canvas>
