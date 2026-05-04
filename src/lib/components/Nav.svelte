@@ -7,7 +7,7 @@
 	const menuItems = [
 		{ id: '01', label: 'Sostenibilità', href: '#sostenibilita' },
 		{ id: '02', label: 'Sport', href: '#sport' },
-		{ id: '03', label: 'Infrastrutture', href: '#infrastrutture' }
+		{ id: '03', label: 'Infrastrutture', href: '/infrastrutture' }
 	];
 </script>
 
@@ -101,6 +101,7 @@
 		flex-direction: column;
 		padding: 2.5rem;
 		box-sizing: border-box;
+		background: white;
 	}
 
 	.menu-content {

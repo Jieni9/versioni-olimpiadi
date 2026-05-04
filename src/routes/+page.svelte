@@ -1,6 +1,6 @@
 <script lang="ts">
+    import Nav from '$lib/components/Nav.svelte';
 	import { onMount } from 'svelte';
-	import Nav from '$lib/components/Nav.svelte';
 	import { Canvas } from '@threlte/core';
 	import Scene from '$lib/components/Scene.svelte';
 
