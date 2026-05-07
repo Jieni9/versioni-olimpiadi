@@ -11,7 +11,7 @@
 	</h1>
 
 	<p class="infra-description">
-		Collaborazione dell'agenzia statunitense ICE per la sicurezza dei Giochi Invernali di Milano-Cortina 2026: compito di supporto tecnico e investigativo per la prevenzione di reati transnazionali, terrorismo e frodi legate all'evento.
+    Il Villaggio olimpico diventerà il più grande studentato d'Italia, con 1.700 posti letto a prezzi più accessibili rispetto a quelli del mercato privato.  
 	</p>
 </main>
 

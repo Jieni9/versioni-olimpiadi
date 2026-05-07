@@ -10,7 +10,7 @@
 	let iceSectionEl = $state<HTMLElement | null>(null);
 
 	const iceParagraph =
-		"Collaborazione dell'agenzia statunitense ICE per la sicurezza dei Giochi Invernali di Milano-Cortina 2026: compito di supporto tecnico e investigativo per la prevenzione di reati transnazionali, terrorismo e frodi legate all'evento.";
+		"Durante il percorso incontrerai parole e frasi che suggeriscono una lettura positiva o negativa degli eventi. Puoi ignorarle, aprirle, confrontarle o cambiare idea. Alla fine, il sito ti restituirà il tuo modo di costruire eroi e villain.";
 
 	const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
 

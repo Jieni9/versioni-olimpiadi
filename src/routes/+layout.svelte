@@ -11,9 +11,6 @@
 </svelte:head>
 
 
-<Nav />
-
-
 <header class="top-bar">
 	<p class="brand">Quante facce ha una medaglia?</p>
 	<nav class="nav">
